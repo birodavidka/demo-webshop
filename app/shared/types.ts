@@ -14,7 +14,7 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  {name: 'All Poducts', href: '/allproducts',},
+  {name: 'All Poducts', href: '/products',},
   {name: 'CBD Buds', href: '/buds', hasDropdown: true, dropdownItems: [
     {name:'THC-9', href: '/buds/thc-9'},
     {name:'HHC-10', href: '/buds/HHC-10'},
