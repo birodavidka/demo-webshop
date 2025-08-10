@@ -1,26 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
 
 type Props = {};
 
 const items = [
   {
     id: "1",
-    title: "Price",
+    title: "Size",
   },
 ];
 
-const PriceRange = (props: Props) => {
-  const [value, setValue] = useState([25, 75]);
+const sizes = [
+  {
+    id: "1",
+    title: "1g",
+  },
+  {
+    id: "2",
+    title: "3g",
+  },
+  {
+    id: "3",
+    title: "5g",
+  },
+];
+
+const SIzeRange = (props: Props) => {
   return (
     <div className="space-y-4 w-full items-center">
       <Accordion type="single" collapsible className="w-full" defaultValue="3">
@@ -31,15 +43,15 @@ const PriceRange = (props: Props) => {
             </AccordionTrigger>
             <AccordionContent className="p-4">
               <div className="space-y-4">
-                <Slider
-                  value={value}
-                  onValueChange={setValue}
-                  aria-label="Dual range slider with output"
-                />
-                <div className="flex items-center justify-between gap-5">
-                  <output className="text-sm font-medium tabular-nums">
-                    {`${value[0]}€`} - {`${value[1]}€`}
-                  </output>
+                <div className="grid grid-cols-2 gap-2">
+                  {sizes.map((size) => (
+                    <button
+                      key={size.id}
+                      className="border rounded-md px-3 py-1 hover:bg-gray-100"
+                    >
+                      {size.title}
+                    </button>
+                  ))}
                 </div>
               </div>
             </AccordionContent>
@@ -50,4 +62,4 @@ const PriceRange = (props: Props) => {
   );
 };
 
-export default PriceRange;
+export default SIzeRange;

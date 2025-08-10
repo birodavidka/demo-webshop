@@ -5,12 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 import { Separator } from "./ui/separator";
 import PriceRange from "./PriceRange";
-
-const categories = [
-  { key: "men-clothes", label: "Men" },
-  { key: "women-clothes", label: "Women" },
-  { key: "accessories", label: "Accessories" },
-];
+import SIzeRange from "./SIzeRange";
+import { navItems } from "@/app/shared/types";
 
 export default function Sidebar() {
   const params = useSearchParams();
@@ -24,27 +20,27 @@ export default function Sidebar() {
       </div>
       <Separator />
       <div className="space-y-1">
-        {categories.map((c) => {
-          const href = `/products?cat=${c.key}`;
+        {navItems.map((navItem) => {
+          const href = `/products?cat=${navItem.key}`;
           /*  const isActive = active === c.key; */
           return (
             <Link
-              key={c.key}
+              key={navItem.key}
               href={href}
-              className={`block rounded-md px-3 py-2`}
+              className={`block rounded-md px-3 py-2 text-xs`}
             >
-              {c.label}
+              {navItem.label}
             </Link>
           );
         })}
       </div>
       <Separator />
-      {/* ide jöhet ár csúszka, méret, szín, stb. */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Price</h2>
-        <PriceRange />
-      </div>
+
+      {/* PRICE RANGE PICKER */}
+      <PriceRange />
       <Separator />
+      {/* SIZE RANGE PICKER */}
+      <SIzeRange />
     </div>
   );
 }
