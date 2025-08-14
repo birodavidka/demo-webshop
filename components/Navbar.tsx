@@ -62,7 +62,7 @@ const Navbar = (props: Props) => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
+        className={`sticky top-0 right-0 left-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "border-border/50 bg-background/80 border-b shadow-sm backdrop-blur-md"
             : "bg-transparent"
