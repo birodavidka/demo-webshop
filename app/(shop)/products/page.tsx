@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Star } from "lucide-react";
+import BreadcrumbComponent from "@/components/BreadCrumb";
 
 type SearchParams = {
   q?: string;
@@ -53,9 +54,10 @@ export default async function ProductsPage({
   return (
     <div className="space-y-6">
       {/* fejléc és rendezés */}
+      <BreadcrumbComponent />
       <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Casual</h1>
+          <h1 className="text-3xl font-bold tracking-tight">All Products</h1>
           <p className="text-sm text-muted-foreground">
             Showing {(page - 1) * pageSize + 1}-
             {Math.min(page * pageSize, total)} of {total} products
@@ -92,7 +94,7 @@ export default async function ProductsPage({
           {paged.map((p) => (
             <li key={p.id}>
               <Card className="group h-full overflow-hidden">
-                <Link href={`/shop/products/${p.slug}`} className="block">
+                <Link href={`/products/${p.slug}`} className="block">
                   <CardContent className="p-0">
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted/40">
                       <Image

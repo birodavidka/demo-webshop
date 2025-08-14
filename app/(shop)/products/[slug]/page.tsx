@@ -9,6 +9,7 @@ import AddToCartButton from "@/components/shop/AddToCartButton";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { getProductBySlug, getProductSlugs } from "@/lib/products";
+import BreadcrumbComponent from "@/components/BreadCrumb";
 
 export async function generateStaticParams() {
   const slugs = await getProductSlugs();
@@ -25,7 +26,7 @@ export default async function ProductSlugPage({
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
-      <nav className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+      {/*       <nav className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
         <Link href="/" className="hover:underline">
           Home
         </Link>
@@ -35,7 +36,8 @@ export default async function ProductSlugPage({
         </Link>
         <span>›</span>
         <span className="text-foreground">{product.title}</span>
-      </nav>
+      </nav> */}
+      <BreadcrumbComponent />
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <section className="min-w-0">
@@ -83,6 +85,13 @@ export default async function ProductSlugPage({
             <AddToCartButton productId={product.id} className="flex-1" />
           </div>
         </section>
+      </div>
+      <div>
+        <Separator className="my-8" />
+        <h2 className="text-2xl font-bold">Product Details</h2>
+        <div className="mt-4 text-sm text-muted-foreground">
+          <p>{product.details}</p>
+        </div>
       </div>
     </div>
   );
