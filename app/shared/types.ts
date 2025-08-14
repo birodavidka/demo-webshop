@@ -35,6 +35,14 @@ export const navItems: NavItem[] = [
     {name:'Storage Containers', href: '/accessories/storage-containers'},
   ]},
 ]
+
+export const productCategories = [
+  { key: "all", label: "All Products" },
+  { key: "buds", label: "CBD Buds" },
+  { key: "vapes", label: "CBD Vapes" },
+  { key: "oils", label: "CBD Oils" },
+  { key: "accessories", label: "Accessories" },
+];
 export interface User {
   id: string;
   name: string;

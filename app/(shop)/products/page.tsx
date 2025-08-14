@@ -1,19 +1,19 @@
-import Link from "next/link";
-import { products } from "@/data/data";
+// app/(shop)/products/page.tsx
 
-export default function ProductsPage({
+import { products } from "@/data/data"; // ahogy nálad van
+
+export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams?: { cat?: string };
+  searchParams: Promise<{ cat?: string | string[] }>;
 }) {
-  const cat = searchParams?.cat ?? "men-clothes";
+  const sp = await searchParams;
+  const catParam = Array.isArray(sp.cat) ? sp.cat[0] : sp.cat;
+  const cat = catParam ?? "men-clothes";
+
   const filtered = products.filter(
     (p) => (p.category ?? "") === cat || cat === "all"
   );
 
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-      asd
-    </div>
-  );
+  return <div>{/* rendereld a filtered listát */}</div>;
 }

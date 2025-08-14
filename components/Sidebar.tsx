@@ -6,11 +6,12 @@ import { SlidersHorizontal } from "lucide-react";
 import { Separator } from "./ui/separator";
 import PriceRange from "./PriceRange";
 import SIzeRange from "./SIzeRange";
-import { navItems } from "@/app/shared/types";
+import { productCategories } from "@/app/shared/types";
+import ProductFilter from "./ProductFilter";
 
 export default function Sidebar() {
   const params = useSearchParams();
-  /*  const active = params.get("cat") ?? "men-clothes"; */
+  const active = params.get("cat") ?? "all";
 
   return (
     <div className="rounded-xl border p-4 sticky top-24 space-y-3">
@@ -18,28 +19,32 @@ export default function Sidebar() {
         <h2 className="text-lg font-semibold">Filters</h2>
         <SlidersHorizontal size={20} />
       </div>
+
       <Separator />
-      <div className="space-y-1">
-        {navItems.map((navItem) => {
-          const href = `/products?cat=${navItem.key}`;
-          /*  const isActive = active === c.key; */
+      <ProductFilter />
+
+      {/*       <div className="space-y-1">
+        {productCategories.map((c) => {
+          const href = c.key === "all" ? "/products" : `/products?cat=${c.key}`;
+          const isActive = active === c.key;
           return (
             <Link
-              key={navItem.key}
+              key={c.key}
               href={href}
-              className={`block rounded-md px-3 py-2 text-xs`}
+              className={`block rounded-md px-3 py-2 text-xs border ${
+                isActive ? "bg-transparent text-black" : "bg-white"
+              }`}
             >
-              {navItem.label}
+              {c.label}
+
             </Link>
           );
         })}
-      </div>
-      <Separator />
+      </div> */}
 
-      {/* PRICE RANGE PICKER */}
+      <Separator />
       <PriceRange />
       <Separator />
-      {/* SIZE RANGE PICKER */}
       <SIzeRange />
     </div>
   );
